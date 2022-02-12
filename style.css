@@ -1,0 +1,97 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+:root {
+    --cell-size: 200px;
+    --mark-size: calc(var(--cell-size) * .9)
+}
+
+
+.header {
+    display: flex;
+    margin-bottom: 100px;
+    padding: 50px;
+}
+
+.gameContainer {
+    display: grid;
+    width: 620px;
+    gap: 10px;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.gameCell {
+    height: var(--cell-size);
+    width: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameCell:first-child,
+.gameCell:nth-child(2),
+.gameCell:nth-child(3) {
+    border-top: none;
+}
+
+.gameCell:nth-child(3n+1) {
+    border-left: none;
+}
+
+.gameCell:nth-child(3n+3) {
+    border-right: none;
+}
+
+.gameCell:last-child,
+.gameCell:nth-child(8),
+.gameCell:nth-child(7) {
+    border-bottom: none;
+}
+
+.gameCell.x::before,
+.gameCell.x::after {
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    position: absolute;
+    background-color: black;
+}
+
+.gameCell.x::before {
+    transform: rotate(45deg);
+}
+
+.gameCell.x::after {
+    transform: rotate(-45deg);
+}
+
+.gameCell.o::before,
+.gameCell.o::after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+}
+
+.gameCell::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.gameCell::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;
+}
